@@ -1,0 +1,45 @@
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        // 1. 自增运算符和自减运算符
+        var num1 = 10;
+        var num2 = 10;
+        num1 = num1 + 1;
+        ++ num2;
+        console.log(num1);
+        console.log(num2);
+
+        // 2. 前置自增 自减运算符
+        //    先自增或自减  再返回原值
+        var p = 10;
+        console.log(++ p + 10);
+        console.log('p = ' + p);
+        console.log(-- p + 10);
+        console.log('p = ' + p);
+
+        // 3. 后置自增 自减运算符
+        //    先返回原值  再自增或自减
+        var p = 10;
+        console.log(p ++ + 10);
+        console.log('p = ' + p);
+        console.log(p -- + 10);
+        console.log('p = ' + p);
+
+        // 自增 和 自减 练习
+        var a = 10;
+        var b = a ++ + ++ a;        // 1. a ++ = 10  a = 11     2. ++ a = 12  a = 12
+        console.log(b);             // 22
+        
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

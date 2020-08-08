@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        var flag = true;
+        var flag2 = false;
+        console.log(flag + 1);      // 显示为 2 true 参与加法运算当作1来看
+        console.log(flag2 + 1);     // 显示为 1 false 参与加法运算当作0来看
+
+        // 如果一个变量声明未赋值，就是 undefined 未定义数据类型
+        var str;
+        console.log(str);
+        var variable = undefined;
+        console.log(variable + 'jos');  // 输出结果为 undefinedjos
+        console.log(variable + 1);      // 输出结果为 NaN  undefined 和 数字相加结果为 NaN
+        
+        // null 空值
+        var space = null;
+        console.log(space + 'jos');     // nulljos
+        console.log(space + 1);         // 1
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
