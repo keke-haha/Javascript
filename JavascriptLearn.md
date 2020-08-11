@@ -565,7 +565,7 @@
         console.log(newArr);
     ~~~
 6. 数组排序
-    
+   
 ### 9. 函数
 
 ##### 9.1 函数的概念
@@ -976,7 +976,7 @@
             console.log(tmp);       // 输出的是 属性名
             console.log(obj[tmp]);  // obj[tmp]得到的是 属性值
         }
-    ~~~ 
+    ~~~
 
 ##### 12.4 小结
 
@@ -1016,3 +1016,119 @@
 + Math.ceil：一个方法，向上取整
 + Math.round：一个方法，四舍五入就近取整
 + Math.random：一个方法，获得随机数(一个浮点型伪随机数字，在0（包括0）和1（不包括）之间)
+
+##### 13.3 常用的JS内置对象 -- Date
+
++ 创建一个新Date对象的唯一方法是通过new操作符，例如：let now = new Date();
++ Date实例用来处理日期和时间
++ Date构造函数的四种形式
+    1. 如果没有提供参数，那么新创建的Date对象表示实例化时刻的日期和时间。
+    2. 构造函数的参数可以是一个Unix时间戳(一个整数值，表示自1970年1月1日00:00:00 UTC以来的毫秒数)
+    3. 构造函数的参数可以是一个表示日期的字符串
+    4. 构造函数的参数分别提供日期和时间的每一个成员
+    5. 代码实例
+        ~~~javascript
+            var today = new Date();
+            var birthday = new Date('December 17, 1995 03:24:00');
+            var birthday = new Date('1995-12-17T03:24:00');
+            var birthday = new Date(1995, 11, 17);
+            var birthday = new Date(1995, 11, 17, 3, 24, 0);
+        ~~~
++ Date日期格式化
+    + 获取日期指定部分的方法
+        | 方法名        | 说明                       | 代码              |
+        | ------------- | -------------------------- | ----------------- |
+        | getFullYear() | 获取当年                   | now.getFullYear() |
+        | getMonth()    | 获取当月（0～11）          | now.getMonth()    |
+        | getDate()     | 获取当天日期               | now.getDate()     |
+        | getDay()      | 获取星期几（周日0～周六6） | now.getDay()      |
+        | getHours()    | 获取当前小时               | now.getHours()    |
+        | getMinutes()  | 获取当前分钟               | now.getMinutes()  |
+        | getSeconds()  | 获取当前秒                 | now.getSeconds()  |
+    + 格式化日期成为指定格式案例
+        ~~~javascript
+            // 3. 格式化日期
+            //      (1) 获取日期指定部分
+            // 当前时间 Tue Aug 11 2020 23:26:26 GMT+0800 (中国标准时间))
+            var date = new Date('Tue Aug 11 2020 23:26:26 GMT+0800 (中国标准时间)');
+            console.log(date.getFullYear());        // 返回当前年份
+            console.log(date.getMonth());           // 返回的月份值比现实月份少 1
+            console.log(date.getDate());            // 返回今天的日期
+            console.log(date.getDay());             // 返回今天星期几   （周日0～周六6）
+            console.log(date.getHours());           // 获得指定时间的小时数
+            console.log(date.getMinutes());         // 获得指定时间的分钟数
+            console.log(date.getSeconds());         // 获得指定时间的秒数
+            //      (2) 格式化日期成我们常见的形式
+            var year = date.getFullYear();
+            var month = date.getMonth() + 1;
+            var dates = date.getDate();
+            var dayArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+            var day = date.getDay();
+            console.log('今天是: ' + year + '年' + month + '月' + dates + '日 ' + dayArr[day]);
+            //      (3) 格式化时分秒    封装一个函数返回当前的时分秒 格式是 08:08:08
+            function getTime(date) {
+                var hour = date.getHours();
+                    hour = hour < 10 ? '0' + hour : hour;
+                var minute = date.getMinutes();
+                    minute = minute < 10 ? '0' + minute : minute;
+                var second = date.getSeconds();
+                    second = second < 10 ? '0' + second : second;
+                return hour + ':' + minute + ':' + second;
+            }
+            console.log(getTime(date));
+        ~~~
++ 获取当前时间的总毫秒数(时间戳)：
+    + 获取的毫秒数不是当前时间的毫秒数，而是距离1970年1月1好过了多少毫秒数
+    + 获取方法
+        ~~~javascript
+            //    (1) 通过 valueOf()    getTime()
+            var date = new Date();
+            console.log(date.valueOf());
+            console.log(date.getTime());
+            //    (2) 简单的写法（实际开发中更常用的写法）
+            var date1 = +new Date();        // +new Date()  返回的就是总的毫秒数
+            console.log(date1);
+            //    (3) H5 新增的获取总的毫秒数
+            console.log(Date.now());
+        ~~~
+
+##### 13.4 常用的JS内置对象 -- Array
+    
++ 创建数组
+    + 利用数组字面量
+    + 利用 new Array()
+    + 代码实例
+        ~~~javascript
+            // 创建数组的两种方式
+            // 1. 利用数组字面量
+            var arr = [1, 2, 3];
+            console.log(arr);
+
+            // 2. 利用 new Array()
+            // var arr1 = new Array();             // 创建了一个空数组
+            // var arr1 = new Array(5);            // 创建了一个长度为5的空数组
+            var arr1 = new Array(1, 2, 3, 4);       // 等价于 [1, 2, 3, 4]
+            console.log(arr1);
+        ~~~
++ 检测数组的方法
+    + instanceof 运算符可以用于检测是否是数组
+        ~~~javascript
+            var arr = [];
+            var obj = {};
+            console.log(arr instanceof Array);
+            console.log(obj instanceof Array);
+        ~~~
+    + 使用 Array.isArray() (H5新增) 函数检测是否是数组，该函数优于 instanceof
+         ~~~javascript
+            var arr = [];
+            var obj = {};
+            console.log(Array.isArray(arr));
+            console.log(Array.isArray(obj));
+        ~~~
++ 数组的增删改查
+    + 添加数组元素的方法
+        1. push()   在数组末尾添加一个或者多个新元素，返回值为数组的新长度
+        2. unshift()    在数组开头添加一个或者多个新元素，返回值为数组的新长度
+    + 删除数组元素的方法
+        1. pop()    在删除数组最后一个元素，并返回这个元素
+        1. shift()  在删除数组第一个元素，并返回这个元素

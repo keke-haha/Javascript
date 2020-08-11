@@ -1,0 +1,74 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // Date() 日期对象  是一个构造函数，必须使用new来调用创建我们的日期对象
+        var arr = new Array();          // 创建一个数组对象
+        var obj = new Object();         // 创建一个对象实例
+
+        // 1. 使用Date  如果没有参数    返回当前系统的当前时间
+        var now = new Date();
+        console.log(now);
+
+        // 2. 参数常用的写法
+        //      （1） 数字型  2020, 08, 11
+        //      （2） 字符串型  '2020-08-11 10:10:10'
+        var now2 = new Date(2020, 08, 11);      
+        var now3 = new Date('2020-08-11 10:10:10');      
+        console.log(now2);                      // 返回的是9月，不是8月，因为月份取值区间为 0～11
+        console.log(now3);                      // 返回的是正确的时间
+
+        // 3. 格式化日期
+        //      (1) 获取日期指定部分
+        // 当前时间 Tue Aug 11 2020 23:26:26 GMT+0800 (中国标准时间))
+        var date = new Date('Tue Aug 11 2020 23:26:26 GMT+0800 (中国标准时间)');
+        console.log(date.getFullYear());        // 返回当前年份
+        console.log(date.getMonth());           // 返回的月份值比现实月份少 1
+        console.log(date.getDate());            // 返回今天的日期
+        console.log(date.getDay());             // 返回今天星期几   （周日0～周六6）
+        console.log(date.getHours());           // 获得指定时间的小时数
+        console.log(date.getMinutes());         // 获得指定时间的分钟数
+        console.log(date.getSeconds());         // 获得指定时间的秒数
+        //      (2) 格式化日期成我们常见的形式
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate();
+        var dayArr = ['星期日', '星期一', '星期二', '星期三', '星期四', '星期五', '星期六'];
+        var day = date.getDay();
+        console.log('今天是: ' + year + '年' + month + '月' + dates + '日 ' + dayArr[day]);
+        //      (3) 格式化时分秒    封装一个函数返回当前的时分秒 格式是 08:08:08
+        function getTime(date) {
+            var hour = date.getHours();
+                hour = hour < 10 ? '0' + hour : hour;
+            var minute = date.getMinutes();
+                minute = minute < 10 ? '0' + minute : minute;
+            var second = date.getSeconds();
+                second = second < 10 ? '0' + second : second;
+            return hour + ':' + minute + ':' + second;
+        }
+        console.log(getTime(date));
+
+        // 4. 获取日期的总的毫秒形式
+        //    获取的毫秒数  不是当前时间的毫秒数    而是距离1970年1月1好过了多少毫秒数
+        //    (1) 通过 valueOf()    getTime()
+        var date = new Date();
+        console.log(date.valueOf());
+        console.log(date.getTime());
+        //    (2) 简单的写法（实际开发中更常用的写法）
+        var date1 = +new Date();        // +new Date()  返回的就是总的毫秒数
+        console.log(date1);
+        //    (3) H5 新增的获取总的毫秒数
+        console.log(Date.now());
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

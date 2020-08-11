@@ -1,0 +1,38 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // 倒计时
+        // 1. 用将来的时间戳减去现在的时间戳
+        // 2. 将相差的时间戳转换成对应的格式
+
+        function addZero(val) {
+            if (val < 10) 
+                return '0' + val;
+            else 
+                return val;
+        }
+
+        function countDown(time) {
+        var now = +new Date();                      // 返回当前时间的毫秒数
+            var input = +new Date(time);            // 用户输入时间的毫秒数
+            var diff = Math.floor((input - now) / 1000);    // 剩余时间的总毫秒数
+            var day = parseInt(diff / 60 / 60 / 24);        // 计算天数
+            var hour = parseInt(diff / 60 / 60 % 24);       // 计算小时数
+            var minute = parseInt(diff / 60 % 60);          // 计算分钟数
+            var second = parseInt(diff % 60);               // 计算当前秒数
+            return addZero(day) + '天' + addZero(hour) + '时' + addZero(minute) + '分' + addZero(second) + '秒';
+        }
+        console.log(countDown('2020-11-11 11:11:11'));
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
