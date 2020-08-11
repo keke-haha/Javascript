@@ -52,6 +52,16 @@
         console.log(numArr2.shift());
         console.log(numArr2);
 
+        // 数组排序
+        var sortArr = [7, 13, 1, 4, 77];
+        sortArr.sort();
+        console.log(sortArr);       // 结果为 1, 13, 4, 7, 77，是字符串的字典序排序
+        sortArr.sort(function(a, b) {
+            return a - b;       // 升序的顺序排列
+            // return b - a;       // 降序的顺序排列
+        })
+        console.log(sortArr);
+
 
     </script>
 

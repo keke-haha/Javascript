@@ -1125,10 +1125,46 @@
             console.log(Array.isArray(arr));
             console.log(Array.isArray(obj));
         ~~~
-+ 数组的增删改查
++ 数组的增删
     + 添加数组元素的方法
         1. push()   在数组末尾添加一个或者多个新元素，返回值为数组的新长度
         2. unshift()    在数组开头添加一个或者多个新元素，返回值为数组的新长度
     + 删除数组元素的方法
         1. pop()    在删除数组最后一个元素，并返回这个元素
-        1. shift()  在删除数组第一个元素，并返回这个元素
+        2. shift()  在删除数组第一个元素，并返回这个元素
++ 数组翻转: reverse()
++ 数组排序: 
+    ~~~javascript
+        // sort()
+        var arr = [7, 13, 1, 4, 77];
+        // 1. 如果没有参数是按字典序排序
+        arr.sort();
+        console.log(arr);           // 结果为 1, 13, 4, 7, 77
+        // 2. 排序的一般写法
+        arr.sort(function(a, b) {
+            return a - b;       // 升序的顺序排列
+            // return b - a;       // 降序的顺序排列
+        })
+        console.log(arr);           // 结果为 1, 4, 7, 13, 77
+    ~~~
++ 获取数组索引方法
+    + indexOf() : 查找数组中的给定元素的第一个索引，如果存在返回索引号，不存在返回-1
+    + lastIndexOf() : 查找数组中的给定元素的最后一个索引，如果存在返回索引号，不存在返回-1
++ 数组转换为字符串
+    + toString() : 将数组转换为字符串，相邻项间用逗号间隔
+    + join(分隔符) : 将数组转换为字符串，相邻项间用分隔符间隔
+    + 代码实例
+        ~~~javascript
+            // toString
+            var arr = [1, 2, 3];
+            console.log(arr.toString());            // 1,2,3
+
+            // join(分隔符)
+            var arr1 = ['red', 'green', 'blue'];
+            console.log(arr.join());                // red,green,blue
+            console.log(arr.join('-'));             // red-green-blue
+            console.log(arr.toString('&'));            // red&green&blue
+        ~~~
++ 数组的其他常用方法
+    + [slice()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) : 该方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
+    + [splice()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) : 该方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
