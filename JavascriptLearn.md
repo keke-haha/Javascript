@@ -1168,3 +1168,86 @@
 + 数组的其他常用方法
     + [slice()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/slice) : 该方法返回一个新的数组对象，这一对象是一个由 begin 和 end 决定的原数组的浅拷贝（包括 begin，不包括end）。原始数组不会被改变。
     + [splice()](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice) : 该方法通过删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+
+
+##### 13.5 常用的JS内置对象 -- String
+
++ 基本包装类型
+    + 概念：就是把简单数据类型 包装成为了 复杂数据类型，使其有方法和属性
+    + 过程：
+        ~~~javascript
+            // (1) 生成临时变量，把简单数据类型包装成复杂数据类型
+            var temp = new String('jos');
+            // (2) 把临时变量的值赋值给 目标变量
+            var str = temp;
+            // (3) 销毁临时变量
+            temp = null;
+            console.log(str.length);
+        ~~~
+    + 为了方便操作基本数据类型，JS提供了三种特殊的引用类型：String、Number 和 Boolean
++ 字符串不可变
+    + 原因：是指字符串里面的值不可变，对于 字符串相加或是赋值 虽然值看上去改变了，但其实是地址变了，内存中开辟了新的内存空间存储新的字符串值
+    + 字符串所有的方法 都不会改变字符串本身(字符串不可变)，所以操作完都会返回一个新的字符串
+    + 建议：因为字符串不可变，所以**不要大量的使用字符串拼接**
++ 根据字符串返回位置
+    + indexOf('要找的字符', [起始的位置])：从指定位置开始查找(没有起始位置则从开头开始查找)，找到返回其位置索引，找不到返回-1
+    + lastIndexOf()：从后往前找，只找第一个匹配的
++ 根据位置返回字符
+    + charAt(index): 根据位置返回字符
+    + charCodeAt(index): 返回相应索引的字符的ASCII值
+    + str[index]: 获取指定位置字符(H5新增的)
++ 字符串操作方法
+    + concat(str1, str2, ...): 用于链接两个或者多个字符串，相当于拼接
+    + substr(start, length): 从start位置开始，获取一个长度为length的字符子串
+    + slice()
+    + substring(start, end): 从start位置开始，end位置结束的字符子串
+    + replace('被替换的字符', '替换为的字符')，但是它只会替换第一个字符
+        ~~~javascript
+            var str = 'hello';
+            console.log(str.replace('l', 'g'));     // 显示为 heglo
+        ~~~
+    + split('分隔符'): 将字符串转换为数组
+    + toUpperCase(): 转换大写
+    + toLowerCase(): 转换小写
+
+### 14. 简单数据类型和复杂数据类型
+
+##### 14.1 内存分配
+
++ 简单数据类型又叫 基本数据类型 或者 值类型，复杂数据类型又叫 引用类型
+    + 值类型：在存储时变量中存储的是值本身
+    + 引用类型：在存储时变量中存储的仅仅是地址(引用)，凡是通过 new 关键字创建的对象都是引用类型
+    + 注意：简单数据类型中的 null，返回的是一个空对象 object
++ 堆和栈
+    + 堆区(操作系统): 存储复杂类型，一般由程序员分配或释放，若不释放，由内存回收机制回收，**复杂数据类型存放到堆里面**
+    + 栈区(操作系统): 由操作系统自动分配释放存放函数的参数值、局部变量的值等，**简单数据类型存放到栈里面**
+    + 注意: JS中没有堆和栈的概念
++ 数据类型内存分配
+    + 简单数据类型 是存放在栈里面 里面直接开辟一个空间存放值
+    + 复杂数据类型 首先在栈里面存放一个十六进制地址 这个地址指向堆里面的数据
++ 数据类型传参
+    + 简单数据类型的传参 其实是把栈空间里面的**值复制一份传给形参**，方法内部对于形参的任何修改，**不会影响外部的变量**
+        ~~~javascript
+            function fn(a) {
+                ++ a;
+                console.log(a);
+            }
+            var x = 10;
+            fn(x);              // 输出为 11
+            console.log(x);     // 输出还是 10
+        ~~~
+    + 复杂数据类型传参 其实就是把**栈空间的十六进制地址传递给形参**，所以方法内部的任何形参修改都会作用与堆中对应地址的数据，因此**最后会影响到外部的变量**
+        ~~~javascript
+            function Person(name) {
+                this.name = name;
+            }
+            function f1(x) {
+                console.log(x.name);    // 这个输出为   刘德华
+                x.name = '张学友';
+                console.log(x.name);    // 这个输出为   张学友
+            }
+            var p = new Person('刘德华');
+            console.log(p.name);        // 这个输出为   刘德华
+            f1(p);
+            console.log(p.name);        // 这个输出为   张学友
+        ~~~
