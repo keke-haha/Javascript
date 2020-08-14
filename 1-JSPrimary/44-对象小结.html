@@ -1,0 +1,80 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+
+        // 1. 创建一个电脑对象，该对象要有颜色、重量、品牌、信号，可以看电影、听音乐、打游戏和敲代码
+        var computer = {
+            color: 'black',
+            weight: '1.29kg',
+            brand: 'lenovo',
+            model: '联想小新Pro13',
+            Movie:function (movieName) {
+                console.log(this.model + '正在播放电影<<' + movieName + '>>');
+            },
+            Music:function (musicName) {
+                console.log(this.model + '正在播放音乐<<' + musicName + '>>');
+            },
+            Game:function (gameName) {
+                console.log(this.model + '可以打 ' + gameName);
+            },
+            Code:function (language) {
+                console.log(this.model + '上可以写' + language);
+            }
+        }
+        console.log(computer.color);
+        console.log(computer.weight);
+        console.log(computer.brand);
+        console.log(computer.model);
+        computer.Movie('沉默的羔羊');
+        computer.Music('青花瓷');
+        computer.Game('LOL');
+        computer.Code('Javascript');
+
+        console.log('------------------------------------------------');
+
+        // 2. 创建一个按钮对象，该对象中需要包含宽、高、背景颜色和点击行为
+        var button = new Object();
+        button.width = 30;
+        button.height = 10;
+        button.backgroudColor = 'blue';
+        button.Click = function () {
+            console.log('这是一个点击按钮');
+        }
+        console.log(button.width);
+        console.log(button.height);
+        console.log(button.backgroudColor);
+        button.Click();
+
+        console.log('------------------------------------------------');
+
+        // 3. 创建一个车的对象，该对象要有重量、颜色、牌子，可以载人、拉货和耕田
+        function Car (weight, color, brand) {
+            this.weight = weight;
+            this.color = color;
+            this.brand = brand;
+            this.Manned = function (number) {
+                console.log('这是辆客车，现在载有' + number + '人');
+            }
+            this.PullGoods = function (number) {
+                console.log('这是辆卡车，现在载有' + number + '吨的货物');
+            }
+            this.Plowing = function () {
+                console.log('这是辆可以耕田的耕田车');
+            }
+        }
+        var myCar = new Car('13吨', '金色', '宇通');
+        console.log(myCar.weight);
+        console.log(myCar.color);
+        console.log(myCar.brand);
+        myCar.Manned(42);
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

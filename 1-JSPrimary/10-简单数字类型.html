@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <script>
+
+        //--------------------------------------------
+        //  数字型
+        //--------------------------------------------
+        var num = 10;       // num 数字型
+        var PI = 3.14;      // PI 数字型
+
+        // 1. 八进制 0～7           数字前面家0表示八进制
+        var num1 = 022;
+        console.log(num1);  // 022 八进制 转换为10进制 就是18
+
+        // 2. 十六进制 0～9 a~f     数字的前面加0x表示十六进制
+        var num2 = 0xb;
+        console.log(num2);
+
+        // 3. 数字型的最小值和最大值
+        console.log(Number.MIN_VALUE);
+        console.log(Number.MAX_VALUE);
+
+        // 4. 无穷小和无穷大
+        console.log(Number.MAX_VALUE * 2);      // 显示为 Infinity 代表无穷大
+        console.log(-Number.MAX_VALUE * 2);     // 显示为 -Infinity 代表无穷小
+
+        // 5. 非数值
+        console.log('jos' - 100);               // 显示为 NaN 代表非数值
+        
+        // 6. isNaN() 这个方法来判断非数字 并返回一个值     如果是数字返回的是false 否则返回true
+        console.log(isNaN(12));
+        console.log(isNaN('jos'));
+
+
+        //--------------------------------------------
+        //  字符串型
+        //--------------------------------------------
+        // 1. 字符串的嵌套
+        var str = '我是一个"高富帅"程序员';
+        var str2 = "我是一个'高富帅'程序员";
+        console.log(str);
+        console.log(str2);
+
+        // 2. 字符串的转义符
+        var str3 = '我是一个"高富帅"\n程序员';
+        console.log(str3);
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

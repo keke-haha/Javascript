@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        // var arr = [];           // 创建了一个空的数组
+        // var arr1 = [1, 2.333, 'jos', false];
+        // console.log(arr1);
+        // console.log(arr1[2]);
+
+        // var arr = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'purple'];
+        // for (var i = 0; i < arr.length; ++ i) {
+        //     console.log(arr[i]);
+        // }
+        // arr.push('black');
+        // console.log(arr[arr.length-1]);
+
+
+        var arr = [2, 6, 1, 77, 52, 25, 7];
+        var maxVal = null;
+        for (var i = 0; i < arr.length; ++ i) {
+            if (maxVal == null || maxVal < arr[i])
+                maxVal = arr[i];
+        }
+        console.log(maxVal);
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
