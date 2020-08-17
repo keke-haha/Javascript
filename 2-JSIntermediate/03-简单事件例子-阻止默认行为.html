@@ -1,0 +1,42 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阻止默认行为</title>
+</head>
+<body>
+    
+    <form>
+        <div>
+            <label for="fname">FirstName:</label>
+            <input type="text" id="fname">
+        </div>
+        <div>
+            <label for="lname">LastName:</label>
+            <input type="text" id="lname">
+        </div>
+        <div>
+            <input type="submit" name="" id="submit">
+        </div>
+    </form> 
+    <p></p>
+
+    <script>
+
+        const form = document.querySelector('form');
+        const fname = document.getElementById('fname');
+        const lname = document.getElementById('lname');
+        const submit = document.getElementById('submit');
+        const para = document.querySelector('p');
+
+        form.onsubmit = function (e) {
+            if (fname.value === '' || lname.value === '') {
+                e.preventDefault();
+                para.textContent = 'You need to fill in both names';
+            }
+        }
+        
+    </script>
+
+</body>
+</html>
