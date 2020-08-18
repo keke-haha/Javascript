@@ -1,0 +1,72 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型式继承</title>
+
+    <script>
+
+        // 原型式继承
+        function Person(first, last ,age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+        }
+
+        Person.prototype.greeting = function() {
+            alert('Hi! I\'m ' + this.name.first + '.');
+        }
+
+        // 创建一个Teacher类,会继承Person所有成员,同时包括一个新属性subject和一个被更新的方法greeting()
+        function Teacher(first, last ,age, gender, interests, subject) {
+            Person.call(this, first, last ,age, gender, interests);
+            this.subject = subject;
+        }
+
+        // 用create函数来创建一个和Person.prototype一样的新的原型属性值
+        // 然后将其作为Teacher.prototype的属性值,使Teacher.prototype现在会继承Person.prototype的所有属性和方法。
+        Teacher.prototype = Object.create(Person.prototype);
+        // 使Teacher()的prototype的constructor属性指向的Teacher()
+        Teacher.prototype.constructor = Teacher;
+
+        Teacher.prototype.greeting = function() {
+            var prefix;
+            if (this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+                prefix = 'Mr';
+            }
+            else if (this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+                prefix = 'Mrs';
+            }
+            else {
+                prefix = 'Mx';
+            }
+            alert('Hello. My name is ' + prefix + ' ' + this.name.last + ', and I teach ' + this.subject + '.');
+        }
+
+        let teacher1 = new Teacher('Dave', 'Griffiths', 31, 'male', ['football', 'cookery'], 'mathematics');
+
+
+        // 从无参构造函数继承
+        // 请注意，如果您继承的构造函数不从传入的参数中获取其属性值，则不需要在call()中为其指定其他参数.
+        function Brick() {
+            this.width = 10;
+            this.height = 20;
+        }
+
+        function BlueGlassBrick() {
+            Brick.call(this);
+            this.opacity = 0.5;
+            this.color = 'blue';
+        }
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>

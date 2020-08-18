@@ -1,0 +1,76 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>构建函数和对象</title>
+
+    <script>
+
+        // 使用普通函数构建对象
+        // function createNewPerson(name) {
+        //     var obj = {};
+        //     obj.name = name;
+        //     obj.greeting = function() {
+        //         alert('Hi I\'m ' + this.name + '.');
+        //     }
+        //     return obj;
+        // }
+
+        // 使用构造函数创建对象
+        // function Person(name) {
+        //     this.name = name;
+        //     this.greeting = function() {
+        //         alert('Hi I\'m ' + this.name + '.');
+        //     }
+        // }
+
+        // var jos = createNewPerson('Jos');
+        // console.log(jos.name);
+        // jos.greeting();
+
+        // 使用构造函数构造对象
+        function Person(first, last, age, gender, interests) {
+            this.name = {
+                'first': first,
+                'last': last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+            this.bio = function() {
+                let call = this.gender === 'male' ? 'He' : 'She';
+                alert(this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ' + call + ' likes ' + this.interests[0] + ' and ' + this.interests[1] + '.');
+            };
+            this.greeting = function() {
+                alert('Hi! I\'m ' + this.name.first + '.');
+            };
+        };
+        let person1 = new Person('Bob', 'Smith', 32, 'male', ['music', 'skiing']);
+        let person2 = new Person('Amy', 'Smith', 30, 'female', ['music', 'movie']);
+
+        Person.prototype.farewell = function() {
+            alert(this.name.first + ' has left the building. Bye for now!');
+        }
+
+        // 使用Object构造函数
+        // let person1 = new Object();
+        // person1.name = 'Chris';
+        // person1['age'] = 32;
+        // person1.greeting = function() {
+        //     alert('Hi! I\'m ' + this.name + '.');
+        // };
+
+
+        // Object.create() 方法,允许基于现有的对象创建新的对象
+        // let person2 = Object.create(person1);
+
+
+
+
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
